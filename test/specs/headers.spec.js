@@ -69,11 +69,11 @@ describe('headers', function () {
     });
   });
 
-  it('should remove content-type if data is empty', function (done) {
+  it('should NOT remove content-type even if data is empty', function (done) {
     axios.post('/foo');
 
     getAjaxRequest().then(function (request) {
-      testHeaderValue(request.requestHeaders, 'Content-Type', undefined);
+      testHeaderValue(request.requestHeaders, 'Content-Type', 'application/x-www-form-urlencoded');
       done();
     });
   });
